@@ -4,7 +4,6 @@
  *   @summary Project 3  || created: 09.27.2016
  *   @todo
  */
-
 "use strict";
 const PROMPT = require('readline-sync');
 
@@ -14,16 +13,17 @@ let movieRating, averageRating, totalRating, numberRating;
 
 function main() {
     process.stdout.write('\x1Bc'); //Clears the screen
-    setContinueResponse();
 
-    while (continueResponse === 1){
-        if(continueResponse = 1) {
+    while ( 0 < 1){
+        setContinueResponse();
+        if (continueResponse === 1) {
             setMovieTitle();
             setMovieRating();
             setNumberRatings();
             calculateTotalRating();
             setAverageRating();
-            setContinueResponse();
+        }
+        else {
             printGoodbye();
         }
     }
@@ -32,13 +32,9 @@ function main() {
 main();
 
 function setContinueResponse() {
-    if (continueResponse != null) {
-        continueResponse = -1;
-        while (continueResponse !== 0 && continueResponse !== 1) {
-            continueResponse = Number(PROMPT.question(`\nDo you want to rate a movie? [0=no, 1=yes]: `));
-        }
-    } else {
-        continueResponse = 1;
+    continueResponse = -1;
+    while (typeof continueResponse === 'undefined' || isNaN(continueResponse) || continueResponse < 0 || continueResponse > 1) {
+        continueResponse = Number(PROMPT.question(`\nPlease choose one of the following. [0 = give average witch current data or 1 = enter rating]: `));
     }
 }
 
@@ -75,7 +71,7 @@ function setNumberRatings() {
 
 function calculateTotalRating() {
     const TOTAL_RATING = 0;
-        totalRating = TOTAL_RATING + movieRating;
+    totalRating = TOTAL_RATING + movieRating;
 }
 
 function setAverageRating() {
@@ -83,5 +79,5 @@ function setAverageRating() {
 }
 
 function printGoodbye() {
-    console.log(`\n\t The average rating of ${movieTitle} is ${averageRating}. Goodbye, we thank you for your time.`);
+    console.log(`\n\t The average rating of ${movieTitle} is ${averageRating} stars. Goodbye, we thank you for your time.`);
 }
